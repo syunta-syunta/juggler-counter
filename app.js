@@ -203,7 +203,7 @@ function renderStart() {
 
 /* --- count --- */
 const PADS = [
-  ["grape", "ブドウ", "big2"], ["cherry", "チェリー", "big2"], ["sBig", "単独BIG", ""],
+  ["grape", "ブドウ", ""], ["cherry", "チェリー", ""], ["sBig", "単独BIG", ""],
   ["sReg", "単独REG", ""], ["cBig", "", ""], ["cReg", "", ""]
 ];
 function renderCount() {
