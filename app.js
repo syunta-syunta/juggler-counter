@@ -348,15 +348,21 @@ function renderRecords() {
   const list = [...sessions].sort((a, b) => b.startedAt.localeCompare(a.startedAt));
   const items = list.map(s => {
     const d = new Date(s.startedAt), t = topSetting(s);
-    return `<button class="rec" data-id="${s.id}">${two(d.getMonth() + 1)}/${two(d.getDate())} ${two(d.getHours())}:${two(d.getMinutes())}
+    return `<div style="display:flex;gap:6px;margin-bottom:6px"><button class="rec" style="margin:0;flex:1" data-id="${s.id}">${two(d.getMonth() + 1)}/${two(d.getDate())} ${two(d.getHours())}:${two(d.getMinutes())}
       <b>${esc(s.store) || "（店名なし）"}</b> ${s.dai ? "台" + esc(s.dai) : ""}${s.status === "active" ? '<span class="badge">実戦中</span>' : ""}<br>
-      <small>${MACHINES[s.machine].name} / ${s.normalG}G / BIG${bigOf(s)} REG${regOf(s)} / ${t ? `最有力 設定${t.set}(${Math.round(t.pct)}%)` : "最有力 —"}</small></button>`;
+      <small>${MACHINES[s.machine].name} / ${s.normalG}G / BIG${bigOf(s)} REG${regOf(s)} / ${t ? `最有力 設定${t.set}(${Math.round(t.pct)}%)` : "最有力 —"}</small></button><button class="dng" data-del="${s.id}" style="flex:none;width:56px">削除</button></div>`;
   }).join("");
   app.innerHTML = tabbar("records") + `<div id="main"><div class="pad">
     <div class="btns" style="margin:0 0 8px"><button id="bk">バックアップ書き出し</button><button id="im">読み込み</button></div>
     ${items || '<div class="note">記録がありません</div>'}</div></div>`;
   wireBar();
   document.querySelectorAll(".rec").forEach(b => b.onclick = () => { detailId = b.dataset.id; view = "detail"; render(); });
+  document.querySelectorAll("[data-del]").forEach(b => b.onclick = async () => {
+    if (!(await confirmModal("この記録を削除しますか？（元に戻せません）"))) return;
+    sessions = sessions.filter(x => x.id !== b.dataset.del);
+    if (activeId === b.dataset.del) activeId = null;
+    saveAll(); renderRecords();
+  });
   $("#bk").onclick = exportBackup;
   $("#im").onclick = importBackup;
 }
