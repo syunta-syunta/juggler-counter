@@ -11,7 +11,10 @@ button:disabled{opacity:.35}
 input,textarea,select{background:#111;border:1px solid #333;border-radius:6px;padding:6px 8px;width:100%;font-size:16px}
 label{font-size:12px;color:#888;display:block;margin-bottom:2px}
 #rot{display:none;position:fixed;inset:0;z-index:999;background:#000;color:#ccc;align-items:center;justify-content:center;text-align:center;font-size:22px;line-height:1.8}
-@media (orientation:portrait){#rot{display:flex}}
+@media (orientation:portrait){
+  body{position:fixed;top:0;left:100%;width:100vh;height:100vw;transform:rotate(90deg);transform-origin:top left;
+    padding:env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left) env(safe-area-inset-top)}
+}
 #toast{position:fixed;left:50%;bottom:20px;transform:translateX(-50%);background:#333;color:#ddd;padding:8px 16px;border-radius:20px;font-size:14px;opacity:0;transition:opacity .25s;pointer-events:none;z-index:900}
 #toast.on{opacity:1}
 
