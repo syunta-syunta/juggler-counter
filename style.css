@@ -15,8 +15,8 @@ label{font-size:12px;color:#888;display:block;margin-bottom:2px}
 #toast{position:fixed;left:50%;bottom:20px;transform:translateX(-50%);background:#333;color:#ddd;padding:8px 16px;border-radius:20px;font-size:14px;opacity:0;transition:opacity .25s;pointer-events:none;z-index:900}
 #toast.on{opacity:1}
 
-#bar{display:flex;align-items:center;gap:4px;height:36px;flex:none;padding:3px 4px;border-bottom:1px solid #222}
-#bar button{padding:3px 9px;font-size:13px;border-radius:6px;white-space:nowrap}
+#bar{display:flex;align-items:center;gap:6px;height:54px;flex:none;padding:3px 4px;border-bottom:1px solid #222}
+#bar button{padding:5px 13px;font-size:19.5px;border-radius:6px;white-space:nowrap}
 #bar button.on{background:#333;color:#fff;border-color:#555}
 #bar .info{flex:1;min-width:0;text-align:right;font-size:11px;color:#777;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;padding:0 4px}
 #main{flex:1;min-height:0;overflow-y:auto;-webkit-overflow-scrolling:touch}
@@ -25,7 +25,7 @@ label{font-size:12px;color:#888;display:block;margin-bottom:2px}
 .start{padding:8px 12px 16px;max-width:760px;margin:0 auto}
 .start h1{font-size:16px;margin:4px 0 8px;color:#999}
 .mgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-bottom:8px}
-.mgrid button{padding:15px 6px;font-size:19.5px;line-height:1.3}
+.mgrid button{padding:10px 4px;font-size:13px;line-height:1.3}
 .mgrid button.on{background:#3a3a3a;border-color:#888;color:#fff}
 .row{display:flex;gap:8px;margin-bottom:8px}
 .row>div{flex:1;min-width:0}
