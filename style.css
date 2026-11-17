@@ -27,7 +27,7 @@ label{font-size:12px;color:#888;display:block;margin-bottom:2px}
 
 .start{padding:8px 12px 16px;max-width:760px;margin:0 auto}
 .start h1{font-size:16px;margin:4px 0 8px;color:#999}
-.mgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-bottom:8px}
+.mgrid{display:grid;grid-template-columns:repeat(5,1fr);gap:6px;margin-bottom:8px}
 .mgrid button{padding:10px 4px;font-size:13px;line-height:1.3}
 .mgrid button.on{background:#3a3a3a;border-color:#888;color:#fff}
 .row{display:flex;gap:8px;margin-bottom:8px}

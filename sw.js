@@ -1,4 +1,4 @@
-const CACHE = "jug-v6";
+const CACHE = "jug-v7";
 const FILES = ["./", "index.html", "style.css", "app.js", "data/machines.js", "manifest.json", "icons/icon-180.png", "icons/icon-192.png", "icons/icon-512.png"];
 self.addEventListener("install", e => {
   e.waitUntil(caches.open(CACHE).then(c => c.addAll(FILES)).then(() => self.skipWaiting()));
