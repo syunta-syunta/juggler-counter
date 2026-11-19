@@ -306,18 +306,21 @@ function renderProb() {
   const s = cur(); if (!s) return go("start");
   app.innerHTML = tabbar("prob") + `<div id="main"><div class="pad">
     <div class="row" style="align-items:flex-end">
-      <div><label>通常時の回転数（ボーナス中除く）</label><input id="ng" inputmode="numeric" value="${s.normalG || ""}"></div>
+      <div><label>現在の通常時の総回転数（前任分を含む）</label><input id="ng" inputmode="numeric" value="${s.normalG || s.prev.G ? s.normalG + s.prev.G : ""}"></div>
       <div><label>前任G数</label><input id="pg" inputmode="numeric" value="${s.prev.G || ""}"></div>
       <div><label>前任BIG</label><input id="pb" inputmode="numeric" value="${s.prev.big || ""}"></div>
       <div><label>前任REG</label><input id="pr" inputmode="numeric" value="${s.prev.reg || ""}"></div>
       <div style="flex:none"><button class="pri" id="ok" style="padding:9px 18px">決定</button></div>
     </div>
+    <div class="note">自分の通常時G：<b>${s.normalG}G</b>（小役は自分の分だけで計算。前任分はBIG・REGのみ使用）</div>
     <div class="cols"><div><h2>項目別の確率</h2>${probTable(s)}</div><div><h2>設定推測</h2>${postBars(s)}</div></div>
   </div></div>`;
   wireBar();
   $("#ok").onclick = () => {
-    s.normalG = int($("#ng").value);
+    const total = int($("#ng").value);
     s.prev = { G: int($("#pg").value), big: int($("#pb").value), reg: int($("#pr").value) };
+    if (total < s.prev.G) { toast("総回転数が前任G数より小さいです"); return; }
+    s.normalG = total - s.prev.G;
     persist(s); renderProb(); toast("決定しました");
   };
 }
